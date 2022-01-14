@@ -4,16 +4,16 @@
   </div>
 </template>
 <script>
-import Tag from "../../utils/tag.js";
-
+import {mapGetters} from 'vuex';
+import Tag from '../../utils/tag.js'
 export default {
-  async created() {
-    await Tag.getTag(this);
+
+  computed :{
+    ...mapGetters('tag',['Tags'])
   },
-  computed : {
-	  Tags() {
-		  console.log(this.$store.getters["Tags"])
-	  }
+  created(){
+    Tag.getTag(this);
+    console.log(this.$store);
   }
 };
 </script>

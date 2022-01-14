@@ -134,7 +134,7 @@ export default {
 
 <style scoped>
 .footer {
-  background: #002e25 !important;
+  background: #0B5ED7 !important;
 }
 
 .footer a {
