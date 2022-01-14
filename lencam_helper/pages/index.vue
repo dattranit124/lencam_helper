@@ -166,7 +166,11 @@ a {
 
 .menu:hover {
   border: solid 2px #7B40F4;
+  box-shadow: 0 5px 25px 0 rgb(0 0 0 / 25%);
+  transform: translateY(-3px);
+  transition: all 150ms ease;
 }
+
 
 i {
   width: 50px;
