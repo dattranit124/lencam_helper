@@ -1,5 +1,5 @@
 <template>
-  <Tutorial/>
+  <ModulesHeader/>
 </template>
 
 <script>

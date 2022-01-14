@@ -42,12 +42,12 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // "@nuxtjs/axios",
-    // "@/modules/integrations"
+    "@nuxtjs/axios",
+    "@/modules/integrations"
   ],
-//   axios: {
-//     baseURL: process.env.API_URL || "https://api.lencam.com"
-// },
+  axios: {
+    baseURL: process.env.API_URL || "https://api.lencam.com"
+},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
