@@ -1,26 +1,25 @@
 <template>
   <div class="footer">
     <div class="container">
-      <div class="py-4">
-        <div class="d-flex flex-wrap justify-content-center">
-          <div class="text-nowrap text-white p-3">
-            <a href="#">Giới thiệu</a>
-          </div>
-          <div class="text-nowrap text-white p-3">
-            <a href="#">Nghề nghiệp</a>
-          </div>
-          <div class="text-nowrap text-white p-3">
-            <a href="#">Báo chí và truyền thông</a>
-          </div>
-          <div class="text-nowrap text-white p-3">
-            <a href="#">Doanh nghiệp</a>
-          </div>
-          <div class="text-nowrap text-white p-3">
-            <a href="#">Sơ đồ trang web</a>
-          </div>
+      <div class="footer-nav d-flex flex-wrap justify-content-center">
+        <div class="text-nowrap text-white p-4">
+          <a href="#">Giới thiệu</a>
+        </div>
+        <div class="text-nowrap text-white p-4">
+          <a href="#">Nghề nghiệp</a>
+        </div>
+        <div class="text-nowrap text-white p-4">
+          <a href="#">Báo chí và truyền thông</a>
+        </div>
+        <div class="text-nowrap text-white p-4">
+          <a href="#">Doanh nghiệp</a>
+        </div>
+        <div class="text-nowrap text-white p-4">
+          <a href="#">Sơ đồ trang web</a>
         </div>
       </div>
 
+      <!-- Menu -->
       <div class="row border-top footer-menu py-4">
         <div
           v-for="(menu, iMenu) in objMenu"
@@ -45,6 +44,7 @@
 
     <div class="border-top p-4">
       <div class="d-sm-flex justify-content-between align-items-center">
+        <!-- Icon -->
         <div class="text-center">
           <ul
             class="list-group list-group-flush list-group-horizontal justify-content-center"
@@ -67,13 +67,14 @@
           </ul>
         </div>
 
+        <!-- Policy -->
         <div>
           <ul class="list-group list-group-flush list-group-horizontal-md">
             <li class="list-group-item text-nowrap text-sm-end text-center">
-              Terms of Service (Điều khoản dịch vụ)
+              <a href="#"> Điều khoản dịch vụ</a>
             </li>
             <li class="list-group-item text-nowrap text-sm-end text-center">
-              Chính sách quyền riêng tư
+              <a href="#"> Chính sách quyền riêng tư</a>
             </li>
           </ul>
         </div>
@@ -88,42 +89,25 @@ export default {
     objMenu() {
       return [
         {
-          title: "CỬA HÀNG TRỰC TUYẾN",
-          list: [
-            "Bán hàng trực tuyến",
-            "Features (Tính năng)",
-            "Examples (Ví dụ)",
-            "Website editor (Trình biên tập trang web)",
-            "Online retail (Bán lẻ trực tuyển)",
-          ],
+          title: "LENCAM",
+          list: ["About Lencam", "History", "Publisher"],
         },
         {
           title: "POINT OF SALE",
-          list: [
-            "Point of Sale",
-            "Features (Tính năng)",
-            "Hardware (Phần cứng)",
-            "POS software (Phần mềm POS)",
-          ],
+          list: ["What's new?"],
         },
         {
-          title: "HỖ TRỢ",
-          list: [
-            "Hỗ trợ 24/7",
-            "Cộng đồng",
-            "Sự kiện cộng đồng",
-            "Changelog (Nhật ký thay đổi)",
-            "API documentation (Tài liệu API)",
-          ],
+          title: "SUPPORT",
+          list: ["Lencam Support", "Community", "Event", "API"],
         },
         {
           title: "LENCAM",
           list: [
-            "Chương trình đối tác",
-            "Chương trình liên kết",
-            "Nhà phát triển ứng dụng",
-            "Investors (Nhà đầu tư)",
-            "Khả năng truy cập",
+            "Partner",
+            "Affiliate program",
+            "App developers",
+            "Investors",
+            "Accessibility",
           ],
         },
       ];
@@ -133,52 +117,7 @@ export default {
 </script>
 
 <style scoped>
-.footer {
-  background: #7B40F4 !important;
-}
-
-.footer a {
-  text-decoration: none;
-  color: #fff;
-}
-.footer a:hover {
-  text-decoration: underline;
-  color: #fff;
-}
-
-.footer ul li {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  color: #fff;
-}
-
-.footer ul li a {
-  text-decoration: none;
-}
-
-.footer ul li a:hover {
-  text-decoration: underline;
-}
-
-.footer .footer-menu ul li h6 {
-  color: #fff;
-  font-weight: bold;
-}
-
-.footer .footer-menu ul li a {
-  color: #b6babf;
-}
-
-.footer ul li a:hover {
-  text-decoration: underline;
-}
-
-.footer .footer-menu ul li a:hover {
-  color: #fff;
-}
-
 .border-top {
-  border-top: 1px solid rgba(210, 213, 217, 0.1) !important;
+  border-top: 1px solid #fff !important;
 }
 </style>

@@ -1,8 +1,9 @@
 <template>
   <div>
     <ModulesHeader />
-    <ModulesSearch/>
+    <ModulesSearch />
     <Nuxt />
+    <Modules-About-Us />
     <Modules-Footer />
   </div>
 </template>
