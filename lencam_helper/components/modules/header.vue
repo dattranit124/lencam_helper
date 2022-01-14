@@ -171,4 +171,7 @@ export default {
   background: transparent;
   color: black;
 }
+.btn {
+  background-color: #7B40F4 !important;
+}
 </style>

@@ -9,10 +9,10 @@
       >
         <a href="#" class="d-flex p-4">
           <div class="text-center">
-            <i :class="item.icon + ' text-success fs-1'"></i>
+            <i :class="item.icon + ' fs-1 text-color' "></i>
           </div>
           <div class="px-4">
-            <h5 class="text-success">{{ item.name }}</h5>
+            <h5 class="text-color">{{ item.name }}</h5>
             <div class="text-muted">
               {{ item.description }}
             </div>
@@ -156,14 +156,16 @@ export default {
 a {
   text-decoration: none !important;
 }
-
+.text-color{
+  color: #7B40F4;
+}
 .menu {
   border: solid 2px transparent;
   border-radius: 8px;
 }
 
 .menu:hover {
-  border: solid 2px #008060;
+  border: solid 2px #7B40F4;
 }
 
 i {
