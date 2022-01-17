@@ -1,44 +1,62 @@
 <template>
-  <div class="sidebar mx-5 my-5">
-    <ul class="nav flex-column">
-      <li class="nav-item" v-for="(tag, index) in Tags" :key="index" >
-        <a @click.stop="clickToTag(tag.tag)" class="nav-link hover"  role="button" :class="{'selected': tagSelected == tag.tag}">
+  <div class="sidebar mx-5 mt-5">
+    <ul class="nav flex-column menu-tag">
+      <li class="nav-item" v-for="(tag, index) in Tags" :key="index">
+        <a
+          @click="clickToTag(tag.tag)"
+          class="nav-link rounded-3 tag-item"
+          role="button"
+          :class="{ 'tag-selected': tagSelected == tag.tag }"
+        >
+        <i v-if="tagSelected == tag.tag" class="fas fa-chevron-up fs-6"></i>
+        <i v-else class="fas fa-chevron-down fs-6"></i>
           {{ tag.tag }}
-          </a>
-          <ul v-if="tagSelected == tag.tag">
-            <li  class="nav-item hover" role="button" @click="clickToGetDetail(page.slug)" v-for="page in pages" :key="page.id">{{page.title}}</li>
-          </ul>
+        </a>
+        
+        <ul class="nav flex-column child-nav" v-if="tagSelected == tag.tag">
+          <li
+            class="nav-item"
+            role="button"
+            v-for="page in Pages"
+            :key="page.id"
+            
+          >
+            <nuxt-link class="ps-5 " :to="`/helper/${page.slug}`">{{ page.title }}</nuxt-link>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import Tag from "../../utils/tag.js";
 import Page from "../../utils/page.js";
 export default {
-  data () {
+  data() {
     return {
-      tagSelected : '',
-      pages : [],
-    }
+      tagSelected: "",
+      pageSelected : '',
+    };
   },
   methods: {
+    ...mapMutations("page", ["deletePage"]),
     /**
      * Ấn vào tag
      *
      */
-     clickToTag(tag) {
+   async clickToTag(tag) {
+      if (this.tagSelected != tag) {
+        this.deletePage();
+      }
       this.tagSelected = tag;
-       this.pages = Page.getPage(this,tag);
+    await  Page.getPage(this, tag);
+    this.$router.push(`/helper/${this.Pages[0].slug}`)
     },
     /**
      * click vào tên trang gọi emit sang cha để lấy detail qua slug
      */
-    clickToGetDetail(value)
-    {
-      this.$emit('getDetail',value);
-    }
+  
   },
 
   computed: {
@@ -51,22 +69,37 @@ export default {
 };
 </script>
 <style scoped>
-* {
+.sidebar {
+  width: 25%;
+  border-right: 1px solid #ccc;
+   min-height: 150px;
+   font-size: 24px;
+}
+a {
+  text-decoration: none;
+  color: black;
+  display: block;
+  white-space: nowrap;
+}
+li {
   list-style: none;
 }
-.sidebar{
-  width: 20%;
-  border-right: 1px solid rgb(171, 169, 169);
+a:hover {
+  text-decoration: underline;
+  color: rgb(108, 18, 243);
+}
+.tag-selected {
+  background-color: rgb(232, 220, 248);
+  width: auto;
+  font-weight: bold;
+  
+}
+.nuxt-link-active {
+    font-weight: bold;
 
 }
- a {
-   color: black !important;
-}
-.selected {
-  background-color: #cab6f1;
-  color:  white !important;
-}
-.hover:hover {
-  color: #7B40F4 !important;
-}
+
+
+
+
 </style>

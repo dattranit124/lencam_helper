@@ -37,6 +37,7 @@ export const mutations = {
  */
 export const getters = {
 	Tags(state) {
+    
     return state.tags;
   },
 };

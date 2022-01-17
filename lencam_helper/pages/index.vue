@@ -25,6 +25,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title : 'Lencam.com - Trung tâm trợ giúp'
+    }
+  },
   computed: {
     objMenu() {
       return [

@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid my-1 mx-5">
       <a class="navbar-brand" href="/">
-        <img src="assets/logo/logo.png" alt="" height="30" />
+        <img src="/assets/logo/logo.png" alt="" height="30" />
         <span class="fst-italic fw-light">trung tâm trợ giúp</span>
       </a>
       <button

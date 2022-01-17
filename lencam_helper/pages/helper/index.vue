@@ -1,33 +1,28 @@
-<template >
-	<div class="d-flex mx-2">
-		<ModulesSidebar
-		@getDetail="clickgetDetailPage"
-		/>
-		<div v-if="pageDetail" class="content mt-5">
-			
-		</div>
-	</div>
+<template>
+ <div>
+ </div>
 </template>
 <script>
+import Page from "../../utils/page";
+import { mapGetters, mapMutations } from "vuex";
 export default {
+  layout : 'helper',
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapGetters("page", ["DetailPage"]),
+  },
+
   methods: {
-	  /**
-	   * Lấy detail của page thông qua slug
-	   */
-	  clickgetDetailPage(value) {
-		  
-	  }
+    ...mapMutations("page", ["deleteDetail"]),
+    /**
+     * Lấy detail của page thông qua slug
+     */
+    
   },
-  data () {
-    return {
-		pageDetail :null,
-    }
-  },
-	
-}
+};
 </script>
-<style scoped>
-	.content {
-		width: 100%;
-	}
+<style>
+
 </style>
