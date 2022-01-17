@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="wrapper">
     <div class="content mt-5">
       <h3 class="mb-2 fs-1 border-bottom pb-2">{{ DetailPage.title }}</h3>
       <div v-html="DetailPage.content"></div>
       <div class="recommend">
-        <h3 class="fs-2">Trong phần này</h3>
+        <h3 class="fs-4">Trong phần này</h3>
 		<ul class="menu-recommend ms-2">
-			<li class="item-recommend fs-4" v-for="(page,index) in pageRecommend" :key="index">
+			<li class="item-recommend fs-5" v-for="(page,index) in pageRecommend" :key="index">
 				<nuxt-link :to="`${page.slug}`">{{page.title}}</nuxt-link>
 			</li>
 		</ul>
@@ -54,8 +54,8 @@ export default {
 <style>
 .content {
   min-width: 500px;
-  width: 80%;
-  font-size: 24px;
+  width: 90%;
+  font-size: 16px;
   min-height: 200px;
   position: relative;
   margin-bottom: 50px;
@@ -71,5 +71,11 @@ a {
   color: black;
   display: block;
   white-space: nowrap;
+}
+a:hover {
+	text-decoration: underline;
+}
+.wrapper {
+	width: 90%;
 }
 </style>

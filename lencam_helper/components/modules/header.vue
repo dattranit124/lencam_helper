@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-xl navbar-light bg-light">
     <div class="container-fluid my-1 mx-5">
       <a class="navbar-brand" href="/">
         <img src="/assets/logo/logo.png" alt="" height="30" />
@@ -22,9 +22,6 @@
             <a class="nav-link " aria-current="page" href="/"
               >Trang chủ</a
             >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " target="_blank" href="#">Nhà phát triển </a>
           </li>
           <li class="nav-item dropdown">
             <a

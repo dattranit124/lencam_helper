@@ -4,7 +4,7 @@
       <li class="nav-item" v-for="(tag, index) in Tags" :key="index">
         <a
           @click="clickToTag(tag.tag)"
-          class="nav-link rounded-3 tag-item"
+          class="nav-link rounded-start tag-item"
           role="button"
           :class="{ 'tag-selected': tagSelected == tag.tag }"
         >
@@ -70,16 +70,17 @@ export default {
 </script>
 <style scoped>
 .sidebar {
-  width: 25%;
+  width: 20%;
   border-right: 1px solid #ccc;
    min-height: 150px;
-   font-size: 24px;
+   font-size: 18px;
 }
 a {
   text-decoration: none;
   color: black;
   display: block;
   white-space: nowrap;
+  line-height: 40px;
 }
 li {
   list-style: none;
@@ -98,8 +99,4 @@ a:hover {
     font-weight: bold;
 
 }
-
-
-
-
 </style>
