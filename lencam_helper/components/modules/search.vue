@@ -9,13 +9,28 @@
         id="input-search"
         class="my-5 ps-3 py-3"
         placeholder="Tìm kiếm tài liệu"
+        v-model="searchText"
       />
-	  <i class="fas fa-search icon-search fs-3" role="button"></i>
+	  <i class="fas fa-search icon-search fs-3" @click="clickToSearch"  role="button"></i>
     </div>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  methods: {
+    clickToSearch() 
+    {
+      debugger
+      this.$router.push({ path: '/search', query: { keyword: this.searchText }});
+    }
+  },
+  data () {
+    return {
+      searchText : '',
+    }
+  },
+
+};
 
 </script>
 <style scoped>
