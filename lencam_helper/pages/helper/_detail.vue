@@ -1,6 +1,7 @@
 <template>
-  <div class="wrapper ms-3 me-sm-3 ms-md-5">
-    <div class="content mt-1">
+  <div  class="wrapper ms-3 me-sm-3 ms-md-5">
+    <LoadingPage v-if="isLoadPage"/>
+    <div v-else class="content mt-1">
       <h3 class="mb-2 fs-3 text-center text-md-start  border-bottom pb-2 mt-2">{{ DetailPage.title }}</h3>
       <div v-html="DetailPage.content"></div>
       <div class="recommend">
@@ -23,7 +24,7 @@ export default {
   },
   data() {
     return {
-      isLoadPage: false,
+    isLoadPage: false,
 	  pageRecommend : [],
 	  title : 'Lencam.com -Trung tâm trợ giúp'
     };
@@ -36,7 +37,7 @@ export default {
   layout: "helper",
   async created() {
 	  
-    // this.isLoadPage = true;
+    this.isLoadPage = true;
 	//Lấy thông tin chi tiết của page qua slug
     await Page.getDetail(this, this.$route.params.detail);
 	//Gán title head bằng title của Page
@@ -52,6 +53,7 @@ export default {
 	let pageCurrent = this.pageRecommend.find(page => page.id === this.DetailPage.id);
 	//Xóa page hiện tại trong list page để ra 1 lít recommend
 	this.pageRecommend.splice(this.pageRecommend.indexOf(pageCurrent),1);
+  this.isLoadPage = false;
   },
   computed: {
     ...mapGetters("page", ["DetailPage","Pages"]),

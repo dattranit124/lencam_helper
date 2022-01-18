@@ -1,9 +1,6 @@
 <template>
-  <div class="border-end">
-    <div class="expand">
-      <!-- Em đang làm dở responsive screen <md -->
-      <i class="fas fa-chevron-circle-down fs-3" role="button"></i>
-    </div>
+  <div class="border-end wrap">
+    <i class="fas fa-chevron-circle-down fs-1 mt-4 d-block d-md-none expand-icon" role="button" @click="clickShowOrHideSideBar($event)"></i>
     <div class="sidebar ms-md-5 pt-3">
       <ul class="nav flex-column menu-tag">
         <li class="nav-item" v-for="(tag, index) in Tags" :key="index">
@@ -19,7 +16,7 @@
           </a>
 
           <ul class="nav flex-column child-nav" v-if="TagSelected == tag.tag">
-            <li
+            <li @click="clickShowOrHideSideBar($event)"
               class="nav-item p-2"
               role="button"
               v-for="page in Pages"
@@ -41,7 +38,8 @@ import Tag from "../../utils/tag.js";
 import Page from "../../utils/page.js";
 export default {
   data() {
-    return {};
+    return {
+    };
   },
   methods: {
     ...mapMutations("page", ["deletePage"]),
@@ -60,8 +58,21 @@ export default {
       this.$router.push(`/helper/${this.Pages[0].slug}`);
     },
     /**
-     * click vào tên trang gọi emit sang cha để lấy detail qua slug
+     * click hiển thị lên menu ở mobile screen
+     * 
      */
+    clickShowOrHideSideBar(e) {
+      debugger
+      console.log(e)
+      var listClass = document.querySelector('.sidebar').classList
+      if(listClass.contains('show-sidebar')) 
+      {
+        listClass.remove('show-sidebar');
+      }
+      else {
+        listClass.add('show-sidebar');
+      }
+    }
   },
 
   computed: {
@@ -95,20 +106,30 @@ a:hover {
   width: auto;
 }
 .nuxt-link-active {
-  font-weight: normal !important ;
+  font-weight: bold !important ;
+}
+.wrap {
+  position: relative;
+}
+.expand-icon {
+  position: absolute;
+  transform: translate(50%,-50%);
 }
 
 @media screen and (max-width: 767px) {
-  .menu-tag {
-    display: none;
-  }
   .sidebar {
+    display: none;
     position: absolute;
-    z-index: 111111;
-    background-color: white;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    transform: translate(5%,20%);
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     
   }
+  .show-sidebar {
+    display: block;
+  }
+
 }
+
 </style>

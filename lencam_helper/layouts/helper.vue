@@ -3,7 +3,7 @@
     <ModulesHeader />
     <ModulesSearch />
     <ModulesLink/>
-	<div class="d-flex mx-2">
+	<div class="d-flex">
 		<ModulesSidebar/>
 		<Nuxt/>
 	</div>

@@ -1,10 +1,12 @@
 <template>
+<div class="page-loading">
   <div class="loadingio-spinner-ripple-y40v4tk3f1j">
     <div class="ldio-njz3fo1h3zk">
       <div></div>
       <div></div>
     </div>
   </div>
+</div>
 </template>
 <script>
 export default {};
@@ -25,6 +27,15 @@ export default {};
     height: 156px;
     opacity: 0;
   }
+}
+.page-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1;
 }
 .ldio-njz3fo1h3zk div {
   position: absolute;
@@ -47,9 +58,10 @@ export default {};
   height: 200px;
   display: inline-block;
   overflow: hidden;
-  background: #ffffff;
   position: absolute;
   left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 
 }
 .ldio-njz3fo1h3zk {
