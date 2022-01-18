@@ -5,7 +5,7 @@
       <ul class="nav flex-column menu-tag">
         <li class="nav-item" v-for="(tag, index) in Tags" :key="index">
           <a
-            @click="clickToTag(tag.tag)"
+            @click="clickToTag(tag)"
             class="nav-link rounded-start tag-item"
             role="button"
             :class="{ 'tag-selected': TagSelected == tag.tag }"
@@ -49,12 +49,12 @@ export default {
      *
      */
     async clickToTag(tag) {
-      if (this.TAG_SELECTED != tag) {
+      if (this.TAG_SELECTED != tag.tag) {
         await this.deletePage();
       }
       // this.tagSelected = tag;
-      this.TAG_SELECTED(tag);
-      await Page.getPage(this, tag);
+      this.TAG_SELECTED(tag.tag);
+      await Page.getPage(this, require("querystring").stringify(tag));
       this.$router.push(`/helper/${this.Pages[0].slug}`);
     },
     /**
@@ -62,8 +62,6 @@ export default {
      * 
      */
     clickShowOrHideSideBar(e) {
-      debugger
-      console.log(e)
       var listClass = document.querySelector('.sidebar').classList
       if(listClass.contains('show-sidebar')) 
       {

@@ -48,7 +48,11 @@ export default {
   //Gán Tag_Selected vào state
   this.TAG_SELECTED(this.DetailPage.tags[0]);
   //Khỉ reload lại trnag get lại list page của tag thông qua page Detail
-  await Page.getPage(this, this.DetailPage.tags[0]);
+  var objQuery = {
+        tag : this.DetailPage.tags[0],
+      }
+    var queryString = require("querystring").stringify(objQuery);
+  await Page.getPage(this, queryString);
 	//check index của page hiện tại trong list page vừa được gán
 	let pageCurrent = this.pageRecommend.find(page => page.id === this.DetailPage.id);
 	//Xóa page hiện tại trong list page để ra 1 lít recommend

@@ -14,7 +14,7 @@ export const actions = {
   async get({ commit }, params) {
    await this.$axios({
       method: "get",
-      url: `/pages/get?shop_id=${SHOP_ID}&tag=${params}`,
+      url: `/pages/get?shop_id=${SHOP_ID}&${params}`,
     })
       .then((response) => {
         commit("SET_PAGE", response.data);
