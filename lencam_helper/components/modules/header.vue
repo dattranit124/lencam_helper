@@ -17,7 +17,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse fs-5" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 menu-item">
+        <ul class="navbar-nav me-auto mb-2 mb-xl-0 menu-item">
           <li class="nav-item">
             <a class="nav-link " aria-current="page" href="/"
               >Trang chủ</a
@@ -25,7 +25,7 @@
           </li>
           <li class="nav-item dropdown">
             <a
-              class="nav-link  d-flex align-items-center justify-content-between"
+              class="nav-link  d-flex align-items-center"
               href="#"
               id="navbarDropdown"
               role="button"
@@ -44,10 +44,10 @@
           </li>
         </ul>
 		<!-- Right -->
-         <ul class="navbar-nav ms-auto mb-lg-0 align-items-center menu-item">	
+         <ul class="navbar-nav ms-auto mb-xl-0 menu-item">	
           <li class="nav-item dropdown">
             <a
-              class="nav-link d-flex align-items-center justify-content-between"
+              class="nav-link d-flex align-items-center"
               href="#"
               id="navbarDropdown"
               role="button"
@@ -71,7 +71,7 @@
 		  <li class="nav-item">
             <a href="http://admin.lencam.com" target="_blank"> 
 			
-			<button class="btn btn-primary py-3 px-4">Đăng nhập</button>
+			<button class="btn btn-primary py-2 px-3 m-auto">Đăng nhập</button>
 			</a>
           </li>
         </ul>

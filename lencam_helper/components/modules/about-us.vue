@@ -52,6 +52,6 @@ export default {
 <style scoped>
 .about-us {
   background-color: #f7f8fb;
-  padding: 3rem;
+  /* padding: 3rem; */
 }
 </style>

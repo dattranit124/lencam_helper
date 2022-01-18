@@ -1,6 +1,7 @@
 const SHOP_ID = 100303;
 export const state = () => ({
   tags: [],
+  tagSelected : '',
 })
 /**
  * Call api để lấy dữ liệu
@@ -29,6 +30,9 @@ export const mutations = {
   SET_TAG(state, payloads) {
     state.tags = payloads;
   },
+  TAG_SELECTED(state,payloads) {
+    state.tagSelected = payloads;
+  }
 };
 
 
@@ -40,5 +44,8 @@ export const getters = {
     
     return state.tags;
   },
+  TagSelected(state) {
+    return state.tagSelected;
+  }
 };
 

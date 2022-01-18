@@ -2,6 +2,7 @@
   <div>
     <ModulesHeader />
     <ModulesSearch />
+    <ModulesLink/>
 	<div class="d-flex mx-2">
 		<ModulesSidebar/>
 		<Nuxt/>

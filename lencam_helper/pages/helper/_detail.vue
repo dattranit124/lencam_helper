@@ -1,7 +1,7 @@
 <template>
-  <div class="wrapper">
-    <div class="content mt-5">
-      <h3 class="mb-2 fs-1 border-bottom pb-2">{{ DetailPage.title }}</h3>
+  <div class="wrapper ms-3 me-sm-3 ms-md-5">
+    <div class="content mt-1">
+      <h3 class="mb-2 fs-3 text-center text-md-start  border-bottom pb-2 mt-2">{{ DetailPage.title }}</h3>
       <div v-html="DetailPage.content"></div>
       <div class="recommend">
         <h3 class="fs-4">Trong phần này</h3>
@@ -18,6 +18,9 @@
 import Page from "../../utils/page";
 import { mapGetters, mapMutations } from "vuex";
 export default {
+  methods: {
+    ...mapMutations('tag',['TAG_SELECTED'])
+  },
   data() {
     return {
       isLoadPage: false,
@@ -41,6 +44,10 @@ export default {
     // this.isLoadPage = false
 	//Gán list page recommend bằng page vừa được lấy từ vuex
 	this.pageRecommend = [...this.Pages];
+  //Gán Tag_Selected vào state
+  this.TAG_SELECTED(this.DetailPage.tags[0]);
+  //Khỉ reload lại trnag get lại list page của tag thông qua page Detail
+  await Page.getPage(this, this.DetailPage.tags[0]);
 	//check index của page hiện tại trong list page vừa được gán
 	let pageCurrent = this.pageRecommend.find(page => page.id === this.DetailPage.id);
 	//Xóa page hiện tại trong list page để ra 1 lít recommend
@@ -53,12 +60,13 @@ export default {
 </script>
 <style>
 .content {
-  min-width: 500px;
   width: 90%;
   font-size: 16px;
   min-height: 200px;
-  position: relative;
   margin-bottom: 50px;
+}
+.content::-webkit-scrollbar {
+    display: none;
 }
 .content img {
   width: 100% !important;
@@ -76,6 +84,14 @@ a:hover {
 	text-decoration: underline;
 }
 .wrapper {
-	width: 90%;
+	width: 80%;
+}
+@media screen and (max-width: 767px) {
+  .wrapper {
+	width: 100%;
+}
+  .content {
+      width: 100%;
+  }
 }
 </style>
