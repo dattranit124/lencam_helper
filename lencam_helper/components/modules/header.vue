@@ -171,4 +171,7 @@ export default {
 .btn {
   background-color: #7B40F4 !important;
 }
+a.navbar-brand {
+  text-decoration: none !important;
+}
 </style>
