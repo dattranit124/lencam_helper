@@ -20,13 +20,55 @@
         </a>
       </div>
     </div>
+    <!-- manage -->
+    <div class="row my-5">
+      <h2 class="text-center my-5">{{ objManage.title }}</h2>
+      <div
+        v-for="(item, iItem) in objManage.list"
+        :key="iItem"
+        class="menu col-md-6 p-3"
+         role="button"
+         @click="clickToItemManage(item.name)"
+      >
+        <div  class="d-flex p-4">
+          <div class="text-center">
+            <i :class="item.icon + ' fs-1 text-color'"></i>
+          </div>
+          <div class="px-4">
+            <h5 class="text-color">{{ item.name }}</h5>
+            <div class="text-muted">
+              {{ item.description }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import Page from '../utils/page'
-import {mapGetters} from 'vuex'
+import Tag from '../utils/tag'
+import {mapGetters,mapMutations} from 'vuex'
 export default {
+  methods: {
+        ...mapMutations("page", ["deletePage"]),
+
+    /**
+     * Click vào item của list manager
+     */
+    async clickToItemManage(tagName)
+    {
+    await this.deletePage();
+     let objTag = {
+       tag : tagName,
+     }
+     var queryString = require("querystring").stringify(objTag);
+      await Page.getPage(this,queryString);
+      var slug = this.Pages[0].slug;
+      this.$router.push(`/helper/${slug}`);
+    }
+  },
   data () {
     return {
       objMenu :  [
@@ -75,12 +117,6 @@ export default {
             },
           ],
         },
-
-        {
-          title: "Manage",
-          list: [],
-        },
-
         {
           title: "Expand",
           list: [
@@ -88,23 +124,25 @@ export default {
               icon: "fas fa-shipping-fast",
               name: "Lencam community",
               description:
-                "Access learning resources and discuss all things Shopify with other sellers.",
+                "Access learning resources and discuss all things Lencam with other sellers.",
                 url : '/'
             },
           ],
         },
-      ]
+      ],
+      objManage : {
+          title: "Manage",
+          list: [],
+        },
     }
   },
   async created () {
-   await Page.getPage(this);
-   this.objMenu.forEach(menu => {
-     if(menu.title === 'Manage')
-     {
-       menu.list = this.PagesHome;
-       return;
-     }
-   });
+   await Tag.getTag(this);
+  this.objManage.list = this.Tags.map((tag)=> ({
+    icon: "fas fa-shipping-fast",
+    name: tag.tag,
+    description:"Access learning resources and discuss all things Lencam with other sellers.",
+  }))
   },
   head() {
     return {
@@ -112,7 +150,8 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('page',['Pages','PagesHome']),
+    ...mapGetters('page',['Pages']),
+    ...mapGetters('tag',['Tags']),
   },
 };
 </script>
