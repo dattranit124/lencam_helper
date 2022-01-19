@@ -1,10 +1,10 @@
 <template>
-  <div  class="wrapper ms-3 me-sm-3 ms-md-5">
+  <div  class="wrapper mx-3  mx-md-5">
     <LoadingPage v-if="isLoadPage"/>
     <div v-else class="content mt-1">
       <h3 class="mb-2 fs-3 text-center text-md-start  border-bottom pb-2 mt-2">{{ DetailPage.title }}</h3>
       <div v-html="DetailPage.content"></div>
-      <div class="recommend">
+      <div v-if="pageRecommend.length>0" class="recommend">
         <h3 class="fs-4">Trong phần này</h3>
 		<ul class="menu-recommend ms-2">
 			<li class="item-recommend fs-5" v-for="(page,index) in pageRecommend" :key="index">
@@ -36,15 +36,12 @@ export default {
   },
   layout: "helper",
   async created() {
-	  
     this.isLoadPage = true;
 	//Lấy thông tin chi tiết của page qua slug
     await Page.getDetail(this, this.$route.params.detail);
 	//Gán title head bằng title của Page
 	this.title= this.DetailPage.title + " - Trung tâm trợ giúp";
     // this.isLoadPage = false
-	//Gán list page recommend bằng page vừa được lấy từ vuex
-	this.pageRecommend = [...this.Pages];
   //Gán Tag_Selected vào state
   this.TAG_SELECTED(this.DetailPage.tags[0]);
   //Khỉ reload lại trnag get lại list page của tag thông qua page Detail
@@ -53,6 +50,8 @@ export default {
       }
     var queryString = require("querystring").stringify(objQuery);
   await Page.getPage(this, queryString);
+  	//Gán list page recommend bằng page vừa được lấy từ vuex
+	this.pageRecommend = [...this.Pages];
 	//check index của page hiện tại trong list page vừa được gán
 	let pageCurrent = this.pageRecommend.find(page => page.id === this.DetailPage.id);
 	//Xóa page hiện tại trong list page để ra 1 lít recommend

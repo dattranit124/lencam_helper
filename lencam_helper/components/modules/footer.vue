@@ -120,4 +120,7 @@ export default {
 .border-top {
   border-top: 1px solid #fff !important;
 }
+.footer * {
+  color: white;
+}
 </style>

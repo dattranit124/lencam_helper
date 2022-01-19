@@ -3,24 +3,14 @@
  </div>
 </template>
 <script>
-import Page from "../../utils/page";
-import { mapGetters, mapMutations } from "vuex";
-export default {
-  layout : 'helper',
-  data() {
-    return {};
-  },
-  computed: {
-    ...mapGetters("page", ["DetailPage"]),
-  },
 
-  methods: {
-    ...mapMutations("page", ["deleteDetail"]),
-    /**
-     * Lấy detail của page thông qua slug
-     */
-    
+export default {
+  created () {
+    this.$router.push('/helper/intro')
   },
+  layout : 'helper',
+ 
+ 
 };
 </script>
 <style>

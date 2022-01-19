@@ -7,9 +7,9 @@
         :key="iItem"
         class="menu col-md-6 p-3"
       >
-        <a href="#" class="d-flex p-4">
+        <a :href="item.url" class="d-flex p-4">
           <div class="text-center">
-            <i :class="item.icon + ' fs-1 text-color' "></i>
+            <i :class="item.icon + ' fs-1 text-color'"></i>
           </div>
           <div class="px-4">
             <h5 class="text-color">{{ item.name }}</h5>
@@ -24,15 +24,12 @@
 </template>
 
 <script>
+import Page from '../utils/page'
+import {mapGetters} from 'vuex'
 export default {
-  head() {
+  data () {
     return {
-      title : 'Lencam.com - Trung tâm trợ giúp'
-    }
-  },
-  computed: {
-    objMenu() {
-      return [
+      objMenu :  [
         {
           title: "Start",
           list: [
@@ -41,24 +38,28 @@ export default {
               name: "Intro to Lencam",
               description:
                 "Follow one of our step-by-step guides and set your business up on Lencam.",
+              url: "/helper/intro",
             },
             {
               icon: "fas fa-shipping-fast",
               name: "Migrate to Lencam",
               description:
                 "Move your online store to Lencam from another platform.",
+              url: "/helper/intro",
             },
             {
               icon: "fas fa-laptop-house",
               name: "Intro to Lencam",
               description:
                 "Follow one of our step-by-step guides and set your business up on Lencam.",
+              url: "/helper/intro",
             },
             {
               icon: "far fa-user-circle",
               name: "Intro to Lencam",
               description:
                 "Follow one of our step-by-step guides and set your business up on Lencam.",
+              url: "/helper/intro",
             },
           ],
         },
@@ -69,75 +70,15 @@ export default {
             {
               icon: "fas fa-shipping-fast",
               name: "Online store",
-              description: "Sell online from your own Shopify website.",
+              description: "Sell online from your own Lencam website.",
+              url: "http://lencam.com",
             },
           ],
         },
 
         {
           title: "Manage",
-          list: [
-            {
-              icon: "fas fa-shipping-fast",
-              name: "Shop",
-              description:
-                "Add products, build collections, and manage your inventory.",
-            },
-            {
-              icon: "fas fa-shipping-fast",
-              name: "Orders",
-              description:
-                "Add products, build collections, and manage your inventory.",
-            },
-            {
-              icon: "fas fa-shipping-fast",
-              name: "Products",
-              description:
-                "Add products, build collections, and manage your inventory.",
-            },
-            {
-              icon: "fas fa-shipping-fast",
-              name: "Collections",
-              description:
-                "Add products, build collections, and manage your inventory.",
-            },
-            {
-              icon: "fas fa-shipping-fast",
-              name: "Customers",
-              description:
-                "Add customer records to your store and manage customer groups.",
-            },
-            {
-              icon: "fas fa-shipping-fast",
-              name: "Pages",
-              description:
-                "Add products, build collections, and manage your inventory.",
-            },
-            {
-              icon: "fas fa-shipping-fast",
-              name: "Payments",
-              description:
-                "Manage how your customers can pay for your products and set up Shopify Payments.",
-            },
-            {
-              icon: "fas fa-shipping-fast",
-              name: "Shipping and delivery",
-              description:
-                "Manage the delivery of products to your customers and set up Shopify Shipping.",
-            },
-            {
-              icon: "fas fa-shipping-fast",
-              name: "Menu",
-              description:
-                "Manage the delivery of products to your customers and set up Shopify Shipping.",
-            },
-            {
-              icon: "fas fa-shipping-fast",
-              name: "Domains",
-              description:
-                "Manage the delivery of products to your customers and set up Shopify Shipping.",
-            },
-          ],
+          list: [],
         },
 
         {
@@ -148,11 +89,30 @@ export default {
               name: "Lencam community",
               description:
                 "Access learning resources and discuss all things Shopify with other sellers.",
+                url : '/'
             },
           ],
         },
-      ];
-    },
+      ]
+    }
+  },
+  async created () {
+   await Page.getPage(this);
+   this.objMenu.forEach(menu => {
+     if(menu.title === 'Manage')
+     {
+       menu.list = this.PagesHome;
+       return;
+     }
+   });
+  },
+  head() {
+    return {
+      title: "Lencam.com - Trung tâm trợ giúp",
+    };
+  },
+  computed: {
+    ...mapGetters('page',['Pages','PagesHome']),
   },
 };
 </script>
@@ -161,8 +121,8 @@ export default {
 a {
   text-decoration: none !important;
 }
-.text-color{
-  color: #7B40F4;
+.text-color {
+  color: #7b40f4;
 }
 .menu {
   border: solid 2px transparent;
@@ -170,13 +130,17 @@ a {
 }
 
 .menu:hover {
-  border: solid 2px #7B40F4;
+  border: solid 2px #7b40f4;
   box-shadow: 0 5px 25px 0 rgb(0 0 0 / 25%);
   transform: translateY(-3px);
   transition: all 150ms ease;
 }
-
-
+@media screen and (max-width : 576px) {
+  .menu {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
 i {
   width: 50px;
 }

@@ -9,10 +9,10 @@ export const state = () => ({
  */
 export const actions = {
   /**Get các page theo tag
-   * 
+   *
    */
   async get({ commit }, params) {
-   await this.$axios({
+    await this.$axios({
       method: "get",
       url: `/pages/get?shop_id=${SHOP_ID}&${params}`,
     })
@@ -25,22 +25,22 @@ export const actions = {
   },
   /**
    * Get detail page bằng slug
-   * 
+   *
    */
   async getDetail({ commit }, params) {
     await this.$axios({
-       method: "get",
-       url: `/pages/detail?shop_id=${SHOP_ID}&slug=${params}`,
-     })
-       .then((response) => {
-         commit("SET_DETAIL", response.data);
-         return response.data;
-       })
-       .catch((error) => {
-         commit("SET_DETAIL", null);
-         return null;
-       });
-   },
+      method: "get",
+      url: `/pages/detail?shop_id=${SHOP_ID}&slug=${params}`,
+    })
+      .then((response) => {
+        commit("SET_DETAIL", response.data);
+        return response.data;
+      })
+      .catch((error) => {
+        commit("SET_DETAIL", null);
+        return null;
+      });
+  },
 };
 /**
  * Mutation Để gán dữ liệu vào state
@@ -53,26 +53,24 @@ export const mutations = {
   },
   /**
    * Delete page trước khi gọi list page mới
-   * @param {*} state 
+   * @param {*} state
    */
- deletePage(state) {
+  deletePage(state) {
     state.pages.length = 0;
   },
   /**
    * gán detail page được gọi từ api \
-   * 
+   *
    */
-  SET_DETAIL(state,payloads)
-  {
+  SET_DETAIL(state, payloads) {
     state.detail = payloads;
   },
   /**
    * Delete detail page trước khi gọi page mới
    */
-  deleteDetail(state)
-  {
+  deleteDetail(state) {
     state.detail = {};
-  }
+  },
 };
 
 /**
@@ -84,5 +82,14 @@ export const getters = {
   },
   DetailPage(state) {
     return state.detail;
-  }
+  },
+  PagesHome(state) {
+    return state.pages.map((page) => ({
+      icon: "fas fa-shipping-fast",
+      name: page.title,
+      description:
+        "Follow one of our step-by-step guides and set your business up on Lencam.",
+      url: `/helper/${page.slug} `,
+    }));
+  },
 };

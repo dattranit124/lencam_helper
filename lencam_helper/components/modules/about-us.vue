@@ -1,7 +1,7 @@
 <template>
   <div class="about-us">
     <div class="containter">
-      <div class="row">
+      <div class="row mx-0">
         <div
           v-for="(data, iData) in objData"
           :key="iData"
@@ -51,7 +51,8 @@ export default {
 
 <style scoped>
 .about-us {
-  background-color: #f7f8fb;
+  background-color: #f7f8fb !important;
   /* padding: 3rem; */
+
 }
 </style>

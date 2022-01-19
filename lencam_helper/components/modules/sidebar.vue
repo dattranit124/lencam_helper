@@ -1,6 +1,6 @@
 <template>
   <div class="border-end wrap">
-    <i class="fas fa-chevron-circle-down fs-1 mt-4 d-block d-md-none expand-icon" role="button" @click="clickShowOrHideSideBar($event)"></i>
+    <i class="fas fa-bars fs-1 mt-4 d-block d-md-none expand-icon" role="button" @click="clickShowOrHideSideBar($event)"></i>
     <div class="sidebar ms-md-5 pt-3">
       <ul class="nav flex-column menu-tag">
         <li class="nav-item" v-for="(tag, index) in Tags" :key="index">
@@ -55,6 +55,7 @@ export default {
       // this.tagSelected = tag;
       this.TAG_SELECTED(tag.tag);
       await Page.getPage(this, require("querystring").stringify(tag));
+      document.querySelector('.sidebar').classList.remove('show-sidebar');
       this.$router.push(`/helper/${this.Pages[0].slug}`);
     },
     /**
@@ -70,7 +71,7 @@ export default {
       else {
         listClass.add('show-sidebar');
       }
-    }
+    },
   },
 
   computed: {
@@ -80,6 +81,7 @@ export default {
   created() {
     Tag.getTag(this);
   },
+ 
 };
 </script>
 <style scoped>
@@ -127,6 +129,7 @@ a:hover {
   .show-sidebar {
     display: block;
   }
+  
 
 }
 

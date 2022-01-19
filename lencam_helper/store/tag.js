@@ -46,6 +46,14 @@ export const getters = {
   },
   TagSelected(state) {
     return state.tagSelected;
+  },
+  TagsPage(state) {
+    return state.tags.map((tag)=>({
+       icon: "fas fa-shipping-fast",
+      name: tag.tag,
+      description:
+        "Follow one of our step-by-step guides and set your business up on Lencam.",
+    }))
   }
 };
 

@@ -1,6 +1,6 @@
 <template>
   <div >
-    <nav class="px-md-5 d-flex align-item-center justify-content-center justify-content-md-start border-bottom fs-6" 
+    <nav class="px-md-5 px-3 d-flex align-item-center justify-content-center justify-content-md-start border-bottom fs-6" 
     >
       <ol class="breadcrumb d-flex align-item-center pt-3">
         <li class="breadcrumb-item"><a class="text-decoration-underline" href="/">Trung tâm trợ giúp Lencam</a></li>

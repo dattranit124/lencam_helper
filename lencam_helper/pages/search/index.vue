@@ -3,7 +3,7 @@
 	  <div v-if="!Array.isArray(Pages)">
 		  	<p class="text-center mt-2 fs-2">Không tìm thấy nội dung ...</p>
 	  </div>
-    <div v-else class="row row-cols-1 row-cols-md-3 g-4 m-5">
+    <div v-else class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 m-2 m-md-5">
       <div v-for="page in Pages" :key="page.id" class="col" role="button" @click="goToDetailPage(page.slug)">
         <div class="card h-100">
           <div class="card-body">
@@ -43,4 +43,5 @@ export default {
   },
 };
 </script>
-<style lang=""></style>
+<style >
+</style>
