@@ -27,10 +27,10 @@
         v-for="(item, iItem) in objManage.list"
         :key="iItem"
         class="menu col-md-6 p-3"
-         role="button"
-         @click="clickToItemManage(item.name)"
+        role="button"
+        @click="clickToItemManage(item.name)"
       >
-        <div  class="d-flex p-4">
+        <div class="d-flex p-4">
           <div class="text-center">
             <i :class="item.icon + ' fs-1 text-color'"></i>
           </div>
@@ -47,31 +47,30 @@
 </template>
 
 <script>
-import Page from '../utils/page'
-import Tag from '../utils/tag'
-import {mapGetters,mapMutations} from 'vuex'
+import Page from "../utils/page";
+import Tag from "../utils/tag";
+import { mapGetters, mapMutations } from "vuex";
 export default {
   methods: {
-        ...mapMutations("page", ["deletePage"]),
+    ...mapMutations("page", ["deletePage"]),
 
     /**
      * Click vào item của list manager
      */
-    async clickToItemManage(tagName)
-    {
-    await this.deletePage();
-     let objTag = {
-       tag : tagName,
-     }
-     var queryString = require("querystring").stringify(objTag);
-      await Page.getPage(this,queryString);
+    async clickToItemManage(tagName) {
+      await this.deletePage();
+      let objTag = {
+        tag: tagName,
+      };
+      var queryString = require("querystring").stringify(objTag);
+      await Page.getPage(this, queryString);
       var slug = this.Pages[0].slug;
       this.$router.push(`/helper/${slug}`);
-    }
+    },
   },
-  data () {
+  data() {
     return {
-      objMenu :  [
+      objMenu: [
         {
           title: "Start",
           list: [
@@ -125,33 +124,36 @@ export default {
               name: "Lencam community",
               description:
                 "Access learning resources and discuss all things Lencam with other sellers.",
-                url : '/'
+              url: "/",
             },
           ],
         },
       ],
-      objManage : {
-          title: "Manage",
-          list: [],
-        },
-    }
+      objManage: {
+        title: "Manage",
+        list: [],
+      },
+    };
   },
-  async created () {
-   await Tag.getTag(this);
-  this.objManage.list = this.Tags.map((tag)=> ({
-    icon: "fas fa-shipping-fast",
-    name: tag.tag,
-    description:"Access learning resources and discuss all things Lencam with other sellers.",
-  }))
+
+  async created() {
+    await Tag.getTag(this);
+    this.objManage.list = this.Tags.map((tag) => ({
+      icon: "fas fa-shipping-fast",
+      name: tag.tag,
+      description:
+        "Access learning resources and discuss all things Lencam with other sellers.",
+    }));
   },
+
   head() {
     return {
       title: "Lencam.com - Trung tâm trợ giúp",
     };
   },
   computed: {
-    ...mapGetters('page',['Pages']),
-    ...mapGetters('tag',['Tags']),
+    ...mapGetters("page", ["Pages"]),
+    ...mapGetters("tag", ["Tags"]),
   },
 };
 </script>
@@ -174,7 +176,7 @@ a {
   transform: translateY(-3px);
   transition: all 150ms ease;
 }
-@media screen and (max-width : 576px) {
+@media screen and (max-width: 576px) {
   .menu {
     width: 95%;
     margin: 0 auto;

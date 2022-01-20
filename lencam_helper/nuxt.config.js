@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "lencam_helper",
+    title: "Lencam helper",
     htmlAttrs: {
       lang: "en",
     },
@@ -30,7 +30,9 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [{ src: "@/plugins/common.js" }],
+
+  serverMiddleware: [{ path: "/api", handler: "@/server-middleware/api.js" }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -41,7 +43,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ["@nuxtjs/axios", "@/modules/integrations"],
   axios: {
-    baseURL: process.env.API_URL || "https://api.lencam.com",
+    // baseURL: process.env.API_URL || "https://api.lencam.com",
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
