@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "Lencam helper",
@@ -32,7 +32,9 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [{ src: "@/plugins/common.js" }],
 
-  serverMiddleware: [{ path: "/api", handler: "@/server-middleware/api.js" }],
+  serverMiddleware: [
+    { path: "/api", handler: "@/server-middleware/api.js" },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -48,7 +50,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-  server: {
-    port: "8080",
-  },
+  // server: {
+  //   port: "8080",
+  // },
 };

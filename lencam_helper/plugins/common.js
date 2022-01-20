@@ -18,5 +18,5 @@ export default ({ $axios, env, req }) => {
   }
 
   // Set base url bằng domain hiện tại
-  $axios.setBaseURL(_host);  
+  $axios.setBaseURL(_host + "/api");
 };

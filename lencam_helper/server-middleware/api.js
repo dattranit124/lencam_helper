@@ -2,10 +2,6 @@ import axios from "axios";
 import https from "https";
 //--
 export default async function (req, res, next) {
-  console.log("1: ", req);
-  console.log("2: ", res);
-  console.log("3: ", next);
-
   try {
     const Lencam = axios.create({
       httpsAgent: new https.Agent({
@@ -13,28 +9,23 @@ export default async function (req, res, next) {
       }),
     });
 
-    // Header
+    //--
     let HEADERS = JSON.parse(JSON.stringify(req.headers));
-
     // HEADERS = {
     //         ...HEADERS,
     //         ... { shop: HEADERS.host }, //--mặc định shop luôn bằng với host
     //     }
-    // Xóa cá header thừa thãi
+    //--Xóa cá header thừa thãi
     if (HEADERS.host) delete HEADERS.host;
     if (HEADERS["accept-encoding"]) delete HEADERS["accept-encoding"];
-
-    // Lấy method
+    //console.log("Header:", JSON.stringify(req.headers));
     const METHOD = req.method;
-
-    // Data bắn lên
+    //--
     let BODY_DATA = null;
-
-    // Base url
+    //--
     const API_URL = "https://api.lencam.com" + req.url;
     //const API_URL = "https://localhost:44305" + req.url;
-
-    // Data trả về
+    //--
     let res_data = null;
 
     //--Nếu là post thì đọc body data và ẩy lên
@@ -45,7 +36,11 @@ export default async function (req, res, next) {
       }
       const data = Buffer.concat(buffers).toString();
       BODY_DATA = JSON.parse(data);
+      //--
+      //console.log(BODY_DATA); // 'Buy the milk'
     }
+
+    console.log("Request Lencam API: " + API_URL);
 
     //--Lấy dữ liệu trên api gốc
     res_data = await Lencam({
@@ -73,11 +68,15 @@ export default async function (req, res, next) {
       data: BODY_DATA,
     })
       .then((response) => {
+        //console.log(response);
         return response;
       })
       .catch((error) => {
+        console.log("Error:", error);
         return null;
       });
+
+    //console.log(res_data.data);
 
     //--Nếu lấy được dữ liệu từ API gốc
     if (res_data) {
@@ -90,6 +89,7 @@ export default async function (req, res, next) {
       res.end("null");
     }
   } catch (err) {
+    console.log(err);
     res.end("null");
   }
 }

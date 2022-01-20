@@ -145,7 +145,7 @@ export default {
         "Access learning resources and discuss all things Lencam with other sellers.",
     }));
   },
-
+  
   head() {
     return {
       title: "Lencam.com - Trung tâm trợ giúp",
