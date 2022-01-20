@@ -8,7 +8,8 @@
 		<Nuxt/>
 	</div>
     <ModulesSupport/>
-    <Modules-Footer />
+    <ModulesFooter />
+    <ModulesCopyRight/>
   </div>
 </template>
 <script>

@@ -69,7 +69,6 @@ export default {
       return acc;
     }, []);
     this.objMenu = result;
-    console.log(this.objMenu)
   },
 
   head() {
@@ -102,6 +101,7 @@ a {
   transform: translateY(-3px);
   transition: all 150ms ease;
 }
+
 @media screen and (max-width: 576px) {
   .menu {
     width: 95%;

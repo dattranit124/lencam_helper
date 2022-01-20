@@ -5,8 +5,9 @@
     <div class="container">
       <Nuxt />
     </div>
-    <Modules-About-Us />
     <ModulesSupport/>
-    <Modules-Footer />
+    <ModulesAboutUs />
+    <ModulesFooter />
+    <ModulesCopyRight/>
   </div>
 </template>

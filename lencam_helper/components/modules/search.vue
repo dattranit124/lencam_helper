@@ -26,13 +26,16 @@ export default {
   methods: {
     async clickToSearch() {
       var objQuery = {
-        keyword : this.searchText
+        keyword : this.searchText,
+        page_size:12,
+        curr_page:1,
       }
       var queryString = require("querystring").stringify(objQuery);
       Page.getPage(this, queryString);
       this.$router.push({
         path: "/search",
-        query: { keyword: this.searchText },
+        query: { keyword: this.searchText,
+         },
       });
     },
   },

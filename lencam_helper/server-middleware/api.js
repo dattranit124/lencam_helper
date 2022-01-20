@@ -40,7 +40,6 @@ export default async function (req, res, next) {
       //console.log(BODY_DATA); // 'Buy the milk'
     }
 
-    console.log("Request Lencam API: " + API_URL);
 
     //--Lấy dữ liệu trên api gốc
     res_data = await Lencam({

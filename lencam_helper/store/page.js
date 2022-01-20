@@ -1,7 +1,10 @@
+//Pagesize ở phần search vì bên api không gửi lên số trang
+const page_size =12;
 const SHOP_ID = 100303;
 export const state = () => ({
   pages: [],
   detail: {},
+  numberPages :0,
 });
 /**
  * Call api để lấy dữ liệu
@@ -22,9 +25,21 @@ export const actions = {
       url: urlDf,
     })
       .then((response) => {
+        
         commit("SET_PAGE", response.data);
+        var totalRows = response.data[0].total_rows;
+        var numberPages = 0;
+        if(totalRows%page_size != 0) {
+          numberPages = Math.floor(totalRows / page_size) + 1;
+        }
+        else {
+          numberPages = totalRows / page_size;
+        }
+        commit("SET_NUMBER_PAGE",numberPages);
+        
       })
       .catch((error) => {
+        debugger
         commit("SET_PAGE", null);
       });
   },
@@ -57,6 +72,21 @@ export const mutations = {
     state.pages = payloads;
   },
   /**
+   * Total row
+   * @param {} state 
+   */
+   SET_TOTAL_ROW(state, payloads) {
+     state.totalRows = payloads
+   },
+   /**
+    * Set numberPage
+    * 
+    */
+   SET_NUMBER_PAGE(state, payloads) {
+     state.numberPages = payloads;
+   },
+
+  /**
    * Delete page trước khi gọi list page mới
    * @param {*} state
    */
@@ -88,4 +118,5 @@ export const getters = {
   DetailPage(state) {
     return state.detail;
   },
+  NumberPages(state) {return state.numberPages;},
 };
