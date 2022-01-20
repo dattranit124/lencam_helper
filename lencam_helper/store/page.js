@@ -12,9 +12,14 @@ export const actions = {
    *
    */
   async get({ commit }, params) {
+    var urlDf = `/pages/get?shop_id=${SHOP_ID}&${params}&order=CREATED_ASC`
+    if(typeof params === "undefined")
+    {
+      urlDf = `/pages/get?shop_id=${SHOP_ID}&order=CREATED_ASC`
+    }
     await this.$axios({
       method: "get",
-      url: `/pages/get?shop_id=${SHOP_ID}&${params}&order=CREATED_ASC`,
+      url: urlDf,
     })
       .then((response) => {
         commit("SET_PAGE", response.data);
@@ -82,14 +87,5 @@ export const getters = {
   },
   DetailPage(state) {
     return state.detail;
-  },
-  PagesHome(state) {
-    return state.pages.map((page) => ({
-      icon: "fas fa-shipping-fast",
-      name: page.title,
-      description:
-        "Follow one of our step-by-step guides and set your business up on Lencam.",
-      url: `/helper/${page.slug} `,
-    }));
   },
 };

@@ -7,6 +7,7 @@
 		<ModulesSidebar/>
 		<Nuxt/>
 	</div>
+    <ModulesSupport/>
     <Modules-Footer />
   </div>
 </template>

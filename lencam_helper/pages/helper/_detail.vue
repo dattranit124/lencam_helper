@@ -5,12 +5,12 @@
       <h3 class="mb-2 fs-3 text-center text-md-start border-bottom pb-2 mt-2">
         {{ DetailPage.title }}
       </h3>
-      <div v-html="DetailPage.content"></div>
+      <div v-html="DetailPage.content" class="ql-editor"></div>
       <div v-if="pageRecommend.length > 0" class="recommend">
-        <h3 class="fs-4">Trong phần này</h3>
-        <ul class="menu-recommend ms-2">
+        <h3 class="fs-5">Trong phần này</h3>
+        <ul class="menu-recommend ms-1">
           <li
-            class="item-recommend fs-5"
+            class="item-recommend p-1"
             v-for="(page, index) in pageRecommend"
             :key="index"
           >

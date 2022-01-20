@@ -6,6 +6,7 @@
       <Nuxt />
     </div>
     <Modules-About-Us />
+    <ModulesSupport/>
     <Modules-Footer />
   </div>
 </template>

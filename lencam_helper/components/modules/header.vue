@@ -1,10 +1,10 @@
 <template>
   <nav class="navbar navbar-expand-xl navbar-light bg-light">
     <div class="container-fluid my-1 mx-5">
-      <a class="navbar-brand" href="/">
+      <nuxt-link to="/" class="navbar-brand">
         <img src="/assets/logo/logo.png" alt="" height="30" />
         <span class="fst-italic fw-light">trung tâm trợ giúp</span>
-      </a>
+      </nuxt-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -16,25 +16,25 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse fs-5" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-xl-0 menu-item">
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="/"
-              >Trang chủ</a
+            <nuxt-link to="/" class="nav-link " aria-current="page"
+              >Trang chủ</nuxt-link
             >
           </li>
           <li class="nav-item dropdown">
-            <a
+            <nuxt-link
               class="nav-link  d-flex align-items-center"
-              href="#"
+              to="/"
               id="navbarDropdown"
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
               <span>Hỗ trợ</span>
-              <i class="fas fa-chevron-down fs-6 mx-1"></i>
-            </a>
+              <i class="fas fa-chevron-down mx-1"></i>
+            </nuxt-link>
             <ul
               class="dropdown-menu pr-5 dropdown-support"
               aria-labelledby="navbarDropdown"
@@ -55,7 +55,7 @@
               aria-expanded="false"
             >
               <span>{{languageSelected}}</span>
-              <i class="fas fa-chevron-down fs-6 mx-1"></i>
+              <i class="fas fa-chevron-down mx-1"></i>
             </a>
             <ul
               class="dropdown-menu pr-5 dropdown-support"

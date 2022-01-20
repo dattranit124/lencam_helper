@@ -48,7 +48,7 @@ export default {
   background-color: #e8e9eb !important;
 }
 .input-area {
-  width: 50%;
+  width: 75%;
   position: relative;
 }
 #input-search {
@@ -67,5 +67,10 @@ export default {
   transform: translateY(-50%);
   right: 10px;
   color: #c9cbce;
+}
+@media screen and (min-width : 1024px) {
+  .input-area {
+    width: 50% !important;
+  }
 }
 </style>

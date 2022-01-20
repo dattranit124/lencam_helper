@@ -1,46 +1,23 @@
 <template>
   <div class="container">
     <div v-for="(menu, iMenu) in objMenu" :key="iMenu" class="row my-5">
-      <h2 class="text-center my-5">{{ menu.title }}</h2>
+      <h2 class="text-center my-5">{{ menu.name }}</h2>
       <div
         v-for="(item, iItem) in menu.list"
         :key="iItem"
         class="menu col-md-6 p-3"
       >
-        <a :href="item.url" class="d-flex p-4">
+        <nuxt-link :to="`/helper/${item.slug}`" class="d-flex p-4">
           <div class="text-center">
-            <i :class="item.icon + ' fs-1 text-color'"></i>
+            <img :src="item.image_url">
           </div>
           <div class="px-4">
-            <h5 class="text-color">{{ item.name }}</h5>
-            <div class="text-muted">
-              {{ item.description }}
+            <h5 class="text-color">{{ item.title }}</h5>
+            <div class="text-muted text-wrap">
+              {{ item.seo_description }}
             </div>
           </div>
-        </a>
-      </div>
-    </div>
-    <!-- manage -->
-    <div class="row my-5">
-      <h2 class="text-center my-5">{{ objManage.title }}</h2>
-      <div
-        v-for="(item, iItem) in objManage.list"
-        :key="iItem"
-        class="menu col-md-6 p-3"
-        role="button"
-        @click="clickToItemManage(item.name)"
-      >
-        <div class="d-flex p-4">
-          <div class="text-center">
-            <i :class="item.icon + ' fs-1 text-color'"></i>
-          </div>
-          <div class="px-4">
-            <h5 class="text-color">{{ item.name }}</h5>
-            <div class="text-muted">
-              {{ item.description }}
-            </div>
-          </div>
-        </div>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -48,8 +25,9 @@
 
 <script>
 import Page from "../utils/page";
-import Tag from "../utils/tag";
+
 import { mapGetters, mapMutations } from "vuex";
+import { title } from "process";
 export default {
   methods: {
     ...mapMutations("page", ["deletePage"]),
@@ -70,82 +48,30 @@ export default {
   },
   data() {
     return {
-      objMenu: [
-        {
-          title: "Start",
-          list: [
-            {
-              icon: "fas fa-shipping-fast",
-              name: "Intro to Lencam",
-              description:
-                "Follow one of our step-by-step guides and set your business up on Lencam.",
-              url: "/helper/intro",
-            },
-            {
-              icon: "fas fa-shipping-fast",
-              name: "Migrate to Lencam",
-              description:
-                "Move your online store to Lencam from another platform.",
-              url: "/helper/intro",
-            },
-            {
-              icon: "fas fa-laptop-house",
-              name: "Intro to Lencam",
-              description:
-                "Follow one of our step-by-step guides and set your business up on Lencam.",
-              url: "/helper/intro",
-            },
-            {
-              icon: "far fa-user-circle",
-              name: "Intro to Lencam",
-              description:
-                "Follow one of our step-by-step guides and set your business up on Lencam.",
-              url: "/helper/intro",
-            },
-          ],
-        },
-
-        {
-          title: "Sell",
-          list: [
-            {
-              icon: "fas fa-shipping-fast",
-              name: "Online store",
-              description: "Sell online from your own Lencam website.",
-              url: "http://lencam.com",
-            },
-          ],
-        },
-        {
-          title: "Expand",
-          list: [
-            {
-              icon: "fas fa-shipping-fast",
-              name: "Lencam community",
-              description:
-                "Access learning resources and discuss all things Lencam with other sellers.",
-              url: "/",
-            },
-          ],
-        },
-      ],
-      objManage: {
-        title: "Manage",
-        list: [],
-      },
+      objMenu: [],
+      
     };
   },
 
   async created() {
-    await Tag.getTag(this);
-    this.objManage.list = this.Tags.map((tag) => ({
-      icon: "fas fa-shipping-fast",
-      name: tag.tag,
-      description:
-        "Access learning resources and discuss all things Lencam with other sellers.",
-    }));
+    await Page.getPage(this);
+    const result = this.Pages.reduce((acc, d) => {
+      const found = acc.find((a) => a.name === d.tags[0]);
+      //const value = { name: d.name, val: d.value };
+      const value =  d ; // the element in data property
+      if (!found) {
+        //acc.push(...value);
+        acc.push({ name: d.tags[0], list: [value] }); // not found, so need to add data property
+      } else {
+        //acc.push({ name: d.name, data: [{ value: d.value }, { count: d.count }] });
+        found.list.push(value); // if found, that means data property exists, so just push new element to found.data.
+      }
+      return acc;
+    }, []);
+    this.objMenu = result;
+    console.log(this.objMenu)
   },
-  
+
   head() {
     return {
       title: "Lencam.com - Trung tâm trợ giúp",

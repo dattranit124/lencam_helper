@@ -51,7 +51,7 @@ export default {
 
 <style scoped>
 .about-us {
-  background-color: #f7f8fb !important;
+  background-color: #d8d6d6 !important;
   /* padding: 3rem; */
 
 }

@@ -62,7 +62,7 @@ export default {
      * click hiển thị lên menu ở mobile screen
      * 
      */
-    clickShowOrHideSideBar(e) {
+    clickShowOrHideSideBar() {
       var listClass = document.querySelector('.sidebar').classList
       if(listClass.contains('show-sidebar')) 
       {
@@ -88,7 +88,7 @@ export default {
 .sidebar {
   min-height: 150px;
   font-size: 18px;
-  width: 300px;
+  width: 250px;
 }
 a {
   text-decoration: none;

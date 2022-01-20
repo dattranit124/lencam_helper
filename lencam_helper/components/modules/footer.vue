@@ -50,29 +50,29 @@
             class="list-group list-group-flush list-group-horizontal justify-content-center"
           >
             <li class="list-group-item">
-              <a href="#"><i class="fab fa-facebook-square fs-2"></i></a>
+              <a href="#"><i class="fab fa-facebook-square fs-4"></i></a>
             </li>
             <li class="list-group-item">
-              <a href="#"> <i class="fab fa-twitter-square fs-2"></i></a>
+              <a href="#"> <i class="fab fa-twitter-square fs-4"></i></a>
             </li>
             <li class="list-group-item">
-              <a href="#"> <i class="fab fa-youtube-square fs-2"></i></a>
+              <a href="#"> <i class="fab fa-youtube-square fs-4"></i></a>
             </li>
             <li class="list-group-item">
-              <a href="#"> <i class="fab fa-instagram-square fs-2"></i></a>
+              <a href="#"> <i class="fab fa-instagram-square fs-4"></i></a>
             </li>
             <li class="list-group-item">
-              <a href="#"> <i class="fab fa-pinterest-square fs-2"></i></a>
+              <a href="#"> <i class="fab fa-pinterest-square fs-4"></i></a>
             </li>
           </ul>
         </div>
-
         <!-- Policy -->
         <div>
           <ul class="list-group list-group-flush list-group-horizontal-md">
             <li class="list-group-item text-nowrap text-sm-end text-center">
               <a href="#"> Điều khoản dịch vụ</a>
             </li>
+            
             <li class="list-group-item text-nowrap text-sm-end text-center">
               <a href="#"> Chính sách quyền riêng tư</a>
             </li>
