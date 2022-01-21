@@ -55,11 +55,13 @@ export default {
   },
 
   async created() {
+    
     var objPageDefault =  {
         curr_page : 1,
         page_size : 10000,
     }
      var queryString = require("querystring").stringify(objPageDefault);
+     
     await Page.getPage(this,queryString);
     const result = this.Pages.reduce((acc, d) => {
       const found = acc.find((a) => a.name === d.tags[0]);
@@ -75,6 +77,8 @@ export default {
       return acc;
     }, []);
     this.objMenu = result;
+    window.scrollTo(0, 0);
+    
   },
 
   head() {

@@ -50,9 +50,5 @@ export default {
 </script>
 
 <style scoped>
-.about-us {
-  background-color: #d8d6d6 !important;
-  /* padding: 3rem; */
 
-}
 </style>
