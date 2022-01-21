@@ -8,9 +8,9 @@
           class="col-lg-4 text-center p-5"
         >
           <i :class="data.icon + ' fs-1'"></i>
-          <h5 class="my-4">{{ data.title }}</h5>
-          <div class="mb-4">{{ data.description }}</div>
-          <a href="#"> {{ data.expand }}</a>
+          <h5 class="my-4">{{ $T.Tran(data.title) }}</h5>
+          <div class="mb-4">{{ $T.Tran(data.description) }}</div>
+          <a href="#"> {{  $T.Tran(data.expand)}}</a>
         </div>
       </div>
     </div>
@@ -24,24 +24,24 @@ export default {
       return [
         {
           icon: "fas fa-users",
-          title: "Cộng đồng",
+          title: "community_title",
           description:
-            "Với hơn 600.000 thành viên trên toàn cầu, hãy tìm câu trả lời hoặc đặt câu hỏi trong cộng đồng thương nhân, Đối tác Shopify và các nhà phát triển của chúng tôi.",
-          expand: "Truy cập cộng đồng",
+            "community_content",
+          expand: "community_access",
         },
         {
           icon: "fab fa-youtube",
-          title: "Kênh YouTube",
+          title: "youtube_title",
           description:
-            "Truy cập kênh YouTube của Trung tâm trợ giúp để tìm các video hữu ích về cách thiết lập cửa hàng trên Shopify.",
-          expand: "Truy cập kênh YouTube của chúng tôi",
+            "youtube_content",
+          expand: "youtube_access",
         },
         {
           icon: "fas fa-laptop-house",
-          title: "Hội thảo trên web",
+          title: "webinar_title",
           description:
-            "Đăng ký tham dự hội thảo trên web sắp diễn ra hoặc xem bản ghi hình và tìm hiểu nhiều chủ đề từ các diễn giả chuyên gia của chúng tôi.",
-          expand: "Xem hội thảo trên web",
+            "webinar_content",
+          expand: "webinar_access",
         },
       ];
     },

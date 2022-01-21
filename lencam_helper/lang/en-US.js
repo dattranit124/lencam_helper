@@ -66,6 +66,17 @@ export default {
 	privacy : 'Privacy Policy',
 
 
+	//About us 
+	community_title : 'Community',
+	community_content : 'With over 600,000 members globally, find answers or ask questions in our community of merchants, Lencam Partners, and developers.',
+	community_access : 'Access to the community',
+	youtube_title : 'Youtube Channel',
+	youtube_content : 'Visit the Help Center YouTube channel to find helpful videos on setting up a shop on Lencam.',
+	youtube_access : 'Access to our youtube channel',
+	webinar_title : 'Webinar',
+	webinar_content : 'Sign up for an upcoming webinar or watch a video recording and learn a variety of topics from our expert speakers.',
+	webinar_access: 'Watch the webinar'
+
 
 
 }
