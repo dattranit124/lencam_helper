@@ -79,7 +79,7 @@ export default {
 
   head() {
     return {
-      title: "Lencam.com - Trung tâm trợ giúp",
+      title: `Lencam.com - ${this.$T.Tran('help_center')}`,
     };
   },
   computed: {

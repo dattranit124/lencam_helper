@@ -77,6 +77,11 @@ export default {
       isLoaded: false,
     };
   },
+  head() {
+    return {
+      title: `Lencam.com - ${this.$T.Tran('help_center')}`,
+    };
+  },
 
   computed: {
     ...mapGetters("page", ["Pages", "NumberPages", "SearchText"]),
