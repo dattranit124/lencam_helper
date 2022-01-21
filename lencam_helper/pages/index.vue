@@ -1,15 +1,15 @@
 <template>
   <div class="container">
     <div v-for="(menu, iMenu) in objMenu" :key="iMenu" class="row my-5">
-      <h2 class="text-center my-5">{{ $T.Tran(menu.name) }}</h2>
+      <h2 class="text-center my-5 fs-3 fw-normal">{{ $T.Tran(menu.name) }}</h2>
       <div
         v-for="(item, iItem) in menu.list"
         :key="iItem"
-        class="menu col-md-6 p-3"
+        class="menu col-md-6 p-2 p-md-3"
       >
-        <nuxt-link :to="`/helper/${item.slug}`" class="d-flex p-4">
-          <div class="text-center">
-            <img :src="item.image_url">
+        <nuxt-link :to="`/helper/${item.slug}`" class="d-flex p-2 p-md-4">
+          <div class="text-center item-page">
+            <img :src="item.image_url" height="60">
           </div>
           <div class="px-4">
             <h5 class="text-color">{{ item.title }}</h5>
@@ -27,8 +27,9 @@
 import Page from "../utils/page";
 
 import { mapGetters, mapMutations } from "vuex";
-import { title } from "process";
+
 export default {
+
   methods: {
     ...mapMutations("page", ["deletePage"]),
 
@@ -54,7 +55,12 @@ export default {
   },
 
   async created() {
-    await Page.getPage(this);
+    var objPageDefault =  {
+        curr_page : 1,
+        page_size : 10000,
+    }
+     var queryString = require("querystring").stringify(objPageDefault);
+    await Page.getPage(this,queryString);
     const result = this.Pages.reduce((acc, d) => {
       const found = acc.find((a) => a.name === d.tags[0]);
       //const value = { name: d.name, val: d.value };
