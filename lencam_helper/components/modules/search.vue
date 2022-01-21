@@ -8,7 +8,7 @@
         aria-label="Large"
         id="input-search"
         class="my-5 ps-3 py-3"
-        placeholder="Tìm kiếm tài liệu"
+        :placeholder="$T.Tran('search_document')"
         v-model="searchText"
         v-on:keyup.enter="clickToSearch"
       />
@@ -21,21 +21,23 @@
   </div>
 </template>
 <script>
-import Page from '../../utils/page'
+import Page from "../../utils/page";
+import { mapMutations } from "vuex";
 export default {
   methods: {
+    ...mapMutations("page", ["setTextSearch"]),
     async clickToSearch() {
       var objQuery = {
-        keyword : this.searchText,
-        page_size:12,
-        curr_page:1,
-      }
+        keyword: this.searchText,
+        page_size: 12,
+        curr_page: 1,
+      };
       var queryString = require("querystring").stringify(objQuery);
-      Page.getPage(this, queryString);
+      await Page.getPage(this, queryString);
+      this.setTextSearch(this.searchText);
       this.$router.push({
         path: "/search",
-        query: { keyword: this.searchText,
-         },
+        query: { keyword: this.searchText },
       });
     },
   },
@@ -71,7 +73,7 @@ export default {
   right: 10px;
   color: #c9cbce;
 }
-@media screen and (min-width : 1024px) {
+@media screen and (min-width: 1024px) {
   .input-area {
     width: 50% !important;
   }

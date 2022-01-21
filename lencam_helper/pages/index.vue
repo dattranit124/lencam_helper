@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-for="(menu, iMenu) in objMenu" :key="iMenu" class="row my-5">
-      <h2 class="text-center my-5">{{ menu.name }}</h2>
+      <h2 class="text-center my-5">{{ $T.Tran(menu.name) }}</h2>
       <div
         v-for="(item, iItem) in menu.list"
         :key="iItem"

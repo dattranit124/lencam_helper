@@ -3,6 +3,7 @@ import { readdirSync, statSync } from "fs";
 
 //--Tự động nạp file js vào Plugin => ko cần khai báo trong nuxt.config.js nữa
 export default function() {
+    
     this.nuxt.hook("build:before", () => {
         const folder = resolve(__dirname, "../integrations");
         const files = readdirSync(folder);

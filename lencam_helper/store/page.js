@@ -5,6 +5,7 @@ export const state = () => ({
   pages: [],
   detail: {},
   numberPages :0,
+  textSearch : ''
 });
 /**
  * Call api để lấy dữ liệu
@@ -27,7 +28,10 @@ export const actions = {
       .then((response) => {
         
         commit("SET_PAGE", response.data);
-        var totalRows = response.data[0].total_rows;
+        if(Array.isArray(response.data))
+        {
+          var totalRows = response.data[0].total_rows;
+        }
         var numberPages = 0;
         if(totalRows%page_size != 0) {
           numberPages = Math.floor(totalRows / page_size) + 1;
@@ -35,7 +39,7 @@ export const actions = {
         else {
           numberPages = totalRows / page_size;
         }
-        commit("SET_NUMBER_PAGE",numberPages);
+        commit("SET_NUMBER_PAGE",numberPages)
         
       })
       .catch((error) => {
@@ -106,6 +110,9 @@ export const mutations = {
   deleteDetail(state) {
     state.detail = {};
   },
+  setTextSearch(state, payloads) {
+    state.textSearch = payloads;
+  }
 };
 
 /**
@@ -119,4 +126,5 @@ export const getters = {
     return state.detail;
   },
   NumberPages(state) {return state.numberPages;},
+  SearchText(state) {return state.textSearch},
 };

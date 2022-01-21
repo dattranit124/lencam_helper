@@ -12,7 +12,7 @@
           >
             <i v-if="TagSelected == tag.tag" class="fas fa-chevron-up fs-6"></i>
             <i v-else class="fas fa-chevron-down fs-6"></i>
-            {{ tag.tag }}
+            {{ $T.Tran(tag.tag) }}
           </a>
 
           <ul class="nav flex-column child-nav" v-if="TagSelected == tag.tag">

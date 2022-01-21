@@ -5,7 +5,7 @@
       <ol class="breadcrumb d-flex align-item-center pt-3">
         <li class="breadcrumb-item"><a class="text-decoration-underline" href="/">Trung tâm trợ giúp Lencam</a></li>
         <li v-if="TagSelected" class="breadcrumb-item" >
-          {{TagSelected}}
+          {{$T.Tran(TagSelected)}}
         </li>
         <li v-if="DetailPage" class="breadcrumb-item" >{{DetailPage.title}}</li>
       </ol>

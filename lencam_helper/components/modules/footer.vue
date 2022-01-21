@@ -3,19 +3,19 @@
     <div class="container">
       <div class="footer-nav d-flex flex-wrap justify-content-center">
         <div class="text-nowrap text-white p-4">
-          <a href="#">Giới thiệu</a>
+          <a href="#">{{$T.Tran('about')}}</a>
         </div>
         <div class="text-nowrap text-white p-4">
-          <a href="#">Nghề nghiệp</a>
+          <a href="#">{{$T.Tran('career')}}</a>
         </div>
         <div class="text-nowrap text-white p-4">
-          <a href="#">Báo chí và truyền thông</a>
+          <a href="#">{{$T.Tran('media')}}</a>
         </div>
         <div class="text-nowrap text-white p-4">
-          <a href="#">Doanh nghiệp</a>
+          <a href="#">{{$T.Tran('enterprise')}}</a>
         </div>
         <div class="text-nowrap text-white p-4">
-          <a href="#">Sơ đồ trang web</a>
+          <a href="#">{{$T.Tran('sitemap')}}</a>
         </div>
       </div>
 
@@ -28,14 +28,14 @@
         >
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <h6>{{ menu.title }}</h6>
+              <h6>{{ $T.Tran(menu.title) | upercase }}</h6>
             </li>
             <li
               v-for="(item, iItem) in menu.list"
               :key="iItem"
               class="list-group-item"
             >
-              <a href="#">{{ item }}</a>
+              <a href="#">{{ $T.Tran(item) }}</a>
             </li>
           </ul>
         </div>
@@ -70,11 +70,11 @@
         <div>
           <ul class="list-group list-group-flush list-group-horizontal-md">
             <li class="list-group-item text-nowrap text-sm-end text-center">
-              <a href="#"> Điều khoản dịch vụ</a>
+              <a href="#"> {{$T.Tran('term_service')}}</a>
             </li>
             
             <li class="list-group-item text-nowrap text-sm-end text-center">
-              <a href="#"> Chính sách quyền riêng tư</a>
+              <a href="#">{{$T.Tran('privacy')}}</a>
             </li>
           </ul>
         </div>
@@ -85,29 +85,36 @@
 
 <script>
 export default {
+  filters: {
+    upercase(value)
+    {
+      return value.toUpperCase();
+    }
+  },
+  
   computed: {
     objMenu() {
       return [
         {
-          title: "LENCAM",
-          list: ["About Lencam", "History", "Publisher"],
+          title: "lencam",
+          list: ["about_lencam", "history", "publisher"],
         },
         {
-          title: "POINT OF SALE",
-          list: ["What's new?"],
+          title: "pointofsale",
+          list: ["whatnew"],
         },
         {
-          title: "SUPPORT",
-          list: ["Lencam Support", "Community", "Event", "API"],
+          title: "support",
+          list: ["lencam_sp", "community", "event", "api"],
         },
         {
-          title: "LENCAM",
+          title: "more",
           list: [
-            "Partner",
-            "Affiliate program",
-            "App developers",
-            "Investors",
-            "Accessibility",
+            "partner",
+            "affiliate",
+            "app_developer",
+            "investors",
+            "accessibility",
           ],
         },
       ];
