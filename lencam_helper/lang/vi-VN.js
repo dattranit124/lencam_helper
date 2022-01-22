@@ -32,7 +32,8 @@ export default {
   page_search: "Trang",
   page_in: "/",
 
-  //Page
+  //Page Detail
+  in_section: 'Trong phần này :',
 
   //Support
   cant_search: "Không thể tìm thấy câu trả lời bạn đang tìm kiếm",

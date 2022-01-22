@@ -15,6 +15,7 @@ module.exports = {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       { rel: "stylesheet", href: "/assets/css/bootstrap.min.css" },
       { rel: "stylesheet", href: "/assets/css/style.css" },
+      { rel: "stylesheet", href: "/assets/css/vue2-editor.css" },
       {
         rel: "stylesheet",
         href: "/assets/fontawesome-free-5.15.4-web/css/all.css",

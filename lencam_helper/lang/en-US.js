@@ -11,13 +11,13 @@ export default {
 	login : 'Log in',
 	search_document :'Search documents', 
 	//Tag
-	accounts : 'Accounts',
-	shops: 'Shops',
-	products : 'Products',
+	accounts : 'Account',
+	shops: 'Shop',
+	products : 'Product',
 	intros : 'Introduction',
-	collections : 'Collections',
-	pages : 'Pages',
-	orders:'Orders',
+	collections : 'Collection',
+	pages : 'Page',
+	orders:'Order',
 	customers:'Customer',
 	menus : 'Menu',
 	domains: 'Domain',
@@ -35,7 +35,8 @@ export default {
 
 
 
-	//Page
+	//Page Detail
+	in_section : 'In this section :',
 
 	//Support
 	cant_search : 'Can’t find the answers you’re looking for',

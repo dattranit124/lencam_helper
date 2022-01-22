@@ -7,7 +7,7 @@
       </h3>
       <div v-html="DetailPage.content" class="ql-editor"></div>
       <div v-if="pageRecommend.length > 0" class="recommend">
-        <h3 class="fs-5">Trong phần này</h3>
+        <h3 class="fs-5">{{$T.Tran('in_section')}}</h3>
         <ul class="menu-recommend ms-1">
           <li
             class="item-recommend p-1"
@@ -42,15 +42,15 @@ export default {
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
-          hid: "description",
-          name: "description",
-          content: "my website description",
+          hid: this.DetailPage.id,
+          name: this.DetailPage.seo_title,
+          content: this.DetailPage.seo_description,
         },
       ],
     };
   },
   layout: "helper",
-  async created() {
+  async fetch() {
     this.isLoadPage = true;
     //Lấy thông tin chi tiết của page qua slug
     await Page.getDetail(this, this.$route.params.detail);
