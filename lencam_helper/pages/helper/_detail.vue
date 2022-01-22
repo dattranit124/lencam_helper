@@ -32,7 +32,7 @@ export default {
     return {
       isLoadPage: false,
       pageRecommend: [],
-      title: "Lencam.com -Trung tâm trợ giúp",
+      title: this.$T.Tran('help_center'),
     };
   },
   head() {
@@ -55,7 +55,7 @@ export default {
     //Lấy thông tin chi tiết của page qua slug
     await Page.getDetail(this, this.$route.params.detail);
     //Gán title head bằng title của Page
-    this.title = this.DetailPage.title + " - Trung tâm trợ giúp";
+    this.title = `${this.DetailPage.title} - ${this.$T.Tran('help_center')}`;
     // this.isLoadPage = false
     //Gán Tag_Selected vào state
     this.TAG_SELECTED(this.DetailPage.tags[0]);

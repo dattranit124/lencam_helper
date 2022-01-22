@@ -77,6 +77,8 @@ export default {
 	webinar_content : 'Sign up for an upcoming webinar or watch a video recording and learn a variety of topics from our expert speakers.',
 	webinar_access: 'Watch the webinar'
 
+	//title
+
 
 
 }
