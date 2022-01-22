@@ -45,3 +45,10 @@ a {
 .about-us {
   background-color: #e8e9eb!important;
 }
+.btn-violet {
+  border: 1px solid #7b40f4;
+}
+.btn-violet:hover {
+  background-color: #7b40f4;
+  color:  white;
+}

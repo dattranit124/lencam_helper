@@ -37,15 +37,33 @@ export default {
   },
   head() {
     return {
-      title: this.title,
+      titleTemplate: this.title,  
       meta: [
-        { charset: "utf-8" },
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
           hid: this.DetailPage.id,
           name: this.DetailPage.seo_title,
           content: this.DetailPage.seo_description,
         },
+        {
+            hid: "og:title",
+            name: "og:title",
+            content: this.DetailPage.seo_description ?? ""
+          },
+          {
+            hid: "og:description",
+            name: "og:description",
+            content: this.DetailPage.seo_description ?? ""
+          },
+          {
+            hid: "og:image",
+            name: "og:image",
+          },
+          {
+            hid: "og:site_name",
+            name: "og:site_name",
+            content: "Lenful"
+          }
+        
       ],
     };
   },
