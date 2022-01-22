@@ -63,7 +63,7 @@ export default {
      * 
      */
     clickShowOrHideSideBar() {
-      var listClass = document.querySelector('.sidebar').classList
+      let listClass = document.querySelector('.sidebar').classList
       if(listClass.contains('show-sidebar')) 
       {
         listClass.remove('show-sidebar');

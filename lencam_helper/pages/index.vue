@@ -41,9 +41,9 @@ export default {
       let objTag = {
         tag: tagName,
       };
-      var queryString = require("querystring").stringify(objTag);
+      let queryString = require("querystring").stringify(objTag);
       await Page.getPage(this, queryString);
-      var slug = this.Pages[0].slug;
+      let slug = this.Pages[0].slug;
       this.$router.push(`/helper/${slug}`);
     },
   },
@@ -56,11 +56,11 @@ export default {
 
   async created() {
     
-    var objPageDefault =  {
+    let objPageDefault =  {
         curr_page : 1,
         page_size : 10000,
     }
-     var queryString = require("querystring").stringify(objPageDefault);
+     let queryString = require("querystring").stringify(objPageDefault);
      
     await Page.getPage(this,queryString);
     const result = this.Pages.reduce((acc, d) => {

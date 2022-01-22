@@ -97,9 +97,9 @@ export default {
   mounted() {
   
     //khai báo ngôn ngữ mặc định là EN
-    var langDefault = "en-US";
+    let langDefault = "en-US";
     //lấy ngôn ngữ hiện tại ở local
-    var languageCurrent = localStorage.getItem("lang");
+    let languageCurrent = localStorage.getItem("lang");
     //nếu không có ngôn ngữ hiện tại hoặc ngôn ngữ hiện tại null
     if (languageCurrent == undefined || languageCurrent == null) {
       //Gán ngôn ngữ bằng ngôn ngữ mặc định
@@ -114,7 +114,7 @@ export default {
       //Nếu có ngôn ngữ hiện tại
     } else {
       //Check xem ngôn ngữ hiện tại đang là gì
-      var langCheck = this.languages.find(
+      let langCheck = this.languages.find(
         (lang) => lang.code == languageCurrent
       );
       //Nếu không có trong object ngôn ngữ đã khai báo

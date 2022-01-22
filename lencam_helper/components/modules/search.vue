@@ -27,12 +27,12 @@ export default {
   methods: {
     ...mapMutations("page", ["setTextSearch"]),
     async clickToSearch() {
-      var objQuery = {
+      let objQuery = {
         keyword: this.searchText,
         page_size: 12,
         curr_page: 1,
       };
-      var queryString = require("querystring").stringify(objQuery);
+      let queryString = require("querystring").stringify(objQuery);
       await Page.getPage(this, queryString);
       this.setTextSearch(this.searchText);
       this.$router.push({
