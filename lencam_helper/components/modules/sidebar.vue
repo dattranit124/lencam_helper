@@ -22,7 +22,7 @@
               v-for="page in Pages"
               :key="page.id"
             >
-              <nuxt-link class="ps-4 fw-light" :to="`/helper/${page.slug}`">{{
+              <nuxt-link class="ps-4 fw-light text-wrap" :to="`/helper/${page.slug}`">{{
                 page.title
               }}</nuxt-link>
             </li>

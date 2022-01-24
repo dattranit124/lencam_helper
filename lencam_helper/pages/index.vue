@@ -9,7 +9,7 @@
       >
         <nuxt-link :to="`/helper/${item.slug}`" class="d-flex p-2 p-md-4">
           <div class="text-center item-page">
-            <img :src="item.image_url" height="60">
+            <img :src="item.image_url" height="60" />
           </div>
           <div class="px-4">
             <h5 class="text-color">{{ item.title }}</h5>
@@ -29,7 +29,6 @@ import Page from "../utils/page";
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
-
   methods: {
     ...mapMutations("page", ["deletePage"]),
 
@@ -50,23 +49,21 @@ export default {
   data() {
     return {
       objMenu: [],
-      
     };
   },
 
   async created() {
-    
-    let objPageDefault =  {
-        curr_page : 1,
-        page_size : 10000,
-    }
-     let queryString = require("querystring").stringify(objPageDefault);
-     
-    await Page.getPage(this,queryString);
-    const result = this.Pages.reduce((acc, d) => {
+    let objPageDefault = {
+      curr_page: 1,
+      page_size: 10000,
+    };
+    let queryString = require("querystring").stringify(objPageDefault);
+
+    await Page.getPage(this, queryString);
+    const result = await this.Pages.reduce((acc, d) => {
       const found = acc.find((a) => a.name === d.tags[0]);
       //const value = { name: d.name, val: d.value };
-      const value =  d ; // the element in data property
+      const value = d; // the element in data property
       if (!found) {
         //acc.push(...value);
         acc.push({ name: d.tags[0], list: [value] }); // not found, so need to add data property
@@ -77,13 +74,13 @@ export default {
       return acc;
     }, []);
     this.objMenu = result;
-    window.scrollTo(0, 0);
-    
   },
-
+  mounted() {
+    window.scrollTo(0, 0);
+  },
   head() {
     return {
-      title: `Lencam.com - ${this.$T.Tran('help_center')}`,
+      title: `Lencam.com - ${this.$T.Tran("help_center")}`,
     };
   },
   computed: {
