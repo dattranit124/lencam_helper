@@ -49,7 +49,7 @@ module.exports = {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-  // server: {
-  //   port: "8080",
-  // },
+  server: {
+    port: "8080",
+  },
 };

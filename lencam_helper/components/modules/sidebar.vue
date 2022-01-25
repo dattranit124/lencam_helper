@@ -120,7 +120,8 @@ a:hover {
   .sidebar {
     display: none;
     position: absolute;
-    transform: translate(5%,20%);
+    top: 40px;
+    left: 10px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
