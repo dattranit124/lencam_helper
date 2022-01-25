@@ -121,7 +121,7 @@ export default {
     this.setTextSearch(objQuery.keyword);
     this.objFilter.keyword = objQuery.keyword;
     var queryString = require("querystring").stringify(this.objFilter);
-    if (this.Pages.length == 0) {
+    if (this.Pages) {
       Page.getPage(this, queryString);
     }
   },
