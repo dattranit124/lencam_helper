@@ -48,7 +48,7 @@ export default {
   sitemap: "Sơ đồ trang web",
   about_lencam: "Giới thiệu Lencam",
   lencam_sp: "Hỗ trợ Lencam",
-  history: "Môn lịch sử",
+  history: "Lịch sử",
   publisher: "Nhà xuất bản",
   api: "API",
   pointofsale: "Điểm bán hàng",
