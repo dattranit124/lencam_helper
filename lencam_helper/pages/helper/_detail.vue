@@ -117,8 +117,6 @@ export default {
 a {
   text-decoration: none;
   color: black;
-  display: block;
-  white-space: nowrap;
 }
 a:hover {
   text-decoration: underline;
