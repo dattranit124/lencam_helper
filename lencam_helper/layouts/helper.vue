@@ -1,4 +1,5 @@
 <template>
+    <client-only>
   <div>
     <ModulesHeader />
     <ModulesSearch />
@@ -11,6 +12,7 @@
     <ModulesFooter />
     <ModulesCopyRight/>
   </div>
+  </client-only>
 </template>
 <script>
 export default {};
